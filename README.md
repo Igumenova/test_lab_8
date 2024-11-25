@@ -9,8 +9,7 @@ npx cypress open
 в открывшемся окне cypress:
 
 > -> e2e testing  
-> -> start e2e  
-> -> testing in chrome  
+> -> start e2e testing in chrome  
 
 в открывшемся окне chrome:
 
