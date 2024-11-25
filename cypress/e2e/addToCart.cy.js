@@ -1,7 +1,7 @@
 import CartPage from "../pageObjects/CartPage";
 import ItemPage from "../pageObjects/ItemPage";
 
-describe("Tests", () => {
+describe("Добавление в корзину", () => {
   let cartPage;
   let itemPage;
 

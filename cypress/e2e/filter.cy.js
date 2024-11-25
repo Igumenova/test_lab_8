@@ -1,6 +1,6 @@
 import FilterPage from "../pageObjects/FilterPage";
 
-describe("Tests", () => {
+describe("Фильтрация", () => {
   let filterPage;
 
   beforeEach(() => {

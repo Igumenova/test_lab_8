@@ -1,11 +1,12 @@
 import SearchPage from "../pageObjects/SearchPage";
 
-describe("Tests", () => {
+describe("Поиск", () => {
   let searchPage;
 
   beforeEach(() => {
     searchPage = new SearchPage();
     searchPage.visitPage();
+    cy.viewport(1200, 750);
   });
 
   it("4.1 Позитивный поиск товара по имени", () => {

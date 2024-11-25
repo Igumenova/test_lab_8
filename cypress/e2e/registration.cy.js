@@ -5,6 +5,7 @@ describe("Страница регистрации", () => {
 
   beforeEach(() => {
     registrationPage = new RegistrationPage();
+    cy.viewport(1200, 750);
     registrationPage.visitPage();
   });
 
@@ -12,7 +13,7 @@ describe("Страница регистрации", () => {
     registrationPage.register(
       `user_${Math.random().toString(36).substring(2, 10)}@example.com`,
       "password123",
-      `8$Math.floor(1000000000 + Math.random() * 9009999999)`
+      `8${Math.floor(1000000000 + Math.random() * 9009999999)}`
     );
     registrationPage.checkSuccessMessage();
   });

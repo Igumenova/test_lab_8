@@ -6,6 +6,7 @@ describe("Страница авторизации", () => {
   beforeEach(() => {
     authPage = new AuthPage();
     authPage.visitPage();
+    cy.viewport(1200, 750);
   });
 
   it("2.1 Позитивная авторизация с валидными данными", () => {
