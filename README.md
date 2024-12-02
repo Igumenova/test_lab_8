@@ -8,10 +8,10 @@ npx cypress open
 
 в открывшемся окне cypress:
 
-> e2e testing
-> start e2e testing in chrome
+> -> e2e testing  
+> -> start e2e testing in chrome  
 
 в открывшемся окне chrome:
 
-> Specs
-> index.cy.js
+> -> Specs  
+> -> index.cy.js
