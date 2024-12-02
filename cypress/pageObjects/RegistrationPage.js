@@ -66,9 +66,9 @@ class RegistrationPage extends Page {
   }
 
   register(email, password, phone) {
-    this.enterEmail(email);
-    this.enterPassword(password);
-    this.enterPhone(phone);
+    if (email) this.enterEmail(email);
+    if (password) this.enterPassword(password);
+    if (phone) this.enterPhone(phone);
     this.enterDate();
     this.enterGender();
     this.confirmPolicy();
@@ -86,6 +86,22 @@ class RegistrationPage extends Page {
   checkErrorMessage() {
     cy.get("#jGrowl").should("be.visible");
     cy.get(".office-message-error").should("be.visible");
+  }
+
+  checkErrorPassMessage() {
+    cy.get(this.passwordInput)
+      .should("have.prop", "validationMessage")
+      .then((validationMessage) => {
+        expect(validationMessage).to.not.be.empty;
+      });
+  }
+
+  checkErrorEmailMessage() {
+    cy.get(this.emailInput)
+      .should("have.prop", "validationMessage")
+      .then((validationMessage) => {
+        expect(validationMessage).to.not.be.empty;
+      });
   }
 }
 

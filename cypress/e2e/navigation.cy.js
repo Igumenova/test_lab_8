@@ -1,6 +1,6 @@
 import NavigationPage from "../pageObjects/NavigationPage";
 
-describe("Registration Tests", () => {
+describe("Навигация", () => {
   let navigationPage;
 
   const sections = [
@@ -22,20 +22,16 @@ describe("Registration Tests", () => {
     cy.viewport(1200, 750);
   });
 
-  describe("3.1 Позитивная навигация по основным разделам магазина", () => {
+  it(`3.1 Навигация по основным разделам магазина`, () => {
     sections.forEach((section) => {
-      it(`Проверка навигации по селектору ${section.selector}`, () => {
-        navigationPage.navigateToSection(section);
-        cy.viewport(1200, 750);
-        navigationPage.verifySectionUrl(section);
-      });
+      navigationPage.navigateToSection(section);
+      cy.viewport(1200, 750);
+      navigationPage.verifySectionUrl(section);
     });
   });
 
-  describe("3.2 Негативный переход на несуществующий ресурс", () => {
-    it("Негативный переход по навигации (Статус: 404)", () => {
-      cy.visit("https://arnypraht.com/asdasdasd/", { failOnStatusCode: false });
-      cy.get("h1").should("contain.text", "Страница не найдена ");
-    });
+  it("3.2 Переход на несуществующий ресурс", () => {
+    cy.visit("https://arnypraht.com/asdasdasd/", { failOnStatusCode: false });
+    cy.get("h1").should("contain.text", "Страница не найдена ");
   });
 });

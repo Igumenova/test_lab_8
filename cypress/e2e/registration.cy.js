@@ -9,7 +9,7 @@ describe("Страница регистрации", () => {
     registrationPage.visitPage();
   });
 
-  it("1.1 Позитивная регистрация пользователя с валидными данными", () => {
+  it("1.1 Регистрация пользователя с валидными данными", () => {
     registrationPage.register(
       `user_${Math.random().toString(36).substring(2, 10)}@example.com`,
       "password123",
@@ -18,7 +18,21 @@ describe("Страница регистрации", () => {
     registrationPage.checkSuccessMessage();
   });
 
-  it("1.2 Негативная регистрация с уже существующим email и номером телефона. Отображение ошибки", () => {
+  it("1.2 Регистрация с пустым полем логина", () => {
+    registrationPage.register(
+      "",
+      "password123",
+      `8${Math.floor(1000000000 + Math.random() * 9009999999)}`
+    );
+    registrationPage.checkErrorEmailMessage();
+  });
+
+  it("1.3 Регистрация с пустым полем пароля", () => {
+    registrationPage.register("asdasdww@example.com", "", "89022222622");
+    registrationPage.checkErrorPassMessage();
+  });
+
+  it("1.4 Регистрация пользователя с неуникальным номером телефона", () => {
     registrationPage.register(
       "asdasdww@example.com",
       "password123",

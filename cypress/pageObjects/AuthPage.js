@@ -9,6 +9,10 @@ class AuthPage extends Page {
     this.submitButton = "#office-auth-login > div.envelope__footer > button";
     this.errorMessage =
       "#jGrowl > div.jGrowl-notification.alert.ui-state-highlight.ui-corner-all.office-message-error";
+    this.passwordError =
+      "#office-auth-register > div.form__main > div.page__main-cols > div:nth-child(1) > div:nth-child(3) > div.field__message";
+    this.emailError =
+      "#office-auth-register > div.form__main > div.page__main-cols > div:nth-child(1) > div:nth-child(1) > div.field__message";
   }
 
   enterEmail(email) {
@@ -28,13 +32,29 @@ class AuthPage extends Page {
   }
 
   auth(email, password) {
-    this.enterEmail(email);
-    this.enterPassword(password);
+    if (email) this.enterEmail(email);
+    if (password) this.enterPassword(password);
     this.submit();
   }
 
   checkErrorMessage() {
     cy.get(this.errorMessage).should("be.visible");
+  }
+
+  checkErrorPassMessage() {
+    cy.get(this.passwordInput)
+      .should("have.prop", "validationMessage")
+      .then((validationMessage) => {
+        expect(validationMessage).to.not.be.empty;
+      });
+  }
+
+  checkErrorEmailMessage() {
+    cy.get(this.emailInput)
+      .should("have.prop", "validationMessage")
+      .then((validationMessage) => {
+        expect(validationMessage).to.not.be.empty;
+      });
   }
 }
 

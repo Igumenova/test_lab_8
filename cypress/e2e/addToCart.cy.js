@@ -15,7 +15,7 @@ describe("Добавление в корзину", () => {
     itemPage.visitPage();
   });
 
-  it("6.1 Позитивное добавление в корзину", () => {
+  it("6.1 Добавление товара в корзину", () => {
     itemPage.addToCart();
     itemPage.addToCart();
     cy.wait(2000);

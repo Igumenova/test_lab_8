@@ -15,7 +15,7 @@ describe("Редактирование корзины", () => {
     itemPage.visitPage();
   });
 
-  it("5.1 Позитивное изменении колличества товара для заказа в корзине", () => {
+  it("5.1 Изменении колличества, уже добавленного товара, в корзине", () => {
     itemPage.addToCart();
     itemPage.addToCart();
     cy.wait(2000);
@@ -23,15 +23,14 @@ describe("Редактирование корзины", () => {
 
     cartPage.checkNotEmptyCart();
     cartPage.plusClick();
-    cartPage.plusClick();
-    cartPage.plusClick();
 
     cartPage.minusClick();
+    cartPage.minusClick();
 
-    cartPage.checkAmount(4);
+    cartPage.checkAmount(1);
   });
 
-  it("5.2 Негативное изменение количества товара в корзине, если изначально корзина пустая", () => {
+  it("5.2 Изменение количества товара в корзине, если изначально корзина пустая", () => {
     itemPage.visitCart();
 
     cartPage.checkEmptyCart();

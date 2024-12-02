@@ -10,7 +10,7 @@ describe("Фильтрация", () => {
     filterPage.visitPage();
   });
 
-  it("7.1 Позитивная фильтрация отображаемых товаров в разделе 'Сумки'", () => {
+  it("7.1 Фильтрация отображаемых товаров в разделе 'Сумки'", () => {
     filterPage.filter();
     cy.wait(2000);
     filterPage.checkFilterBurgundy();
